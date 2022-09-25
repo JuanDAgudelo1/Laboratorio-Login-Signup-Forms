@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Application_uno</string>
+
+    <string-array name="rol">
+        <item> Vendedor de comidas </item>
+        <item>Comprador</item>
+        <item>Domicilio</item>
+    </string-array>
+
+</resources>
