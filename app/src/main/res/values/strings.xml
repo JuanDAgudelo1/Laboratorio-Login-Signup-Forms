@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Application_uno</string>
+    <string name="app_name">Login Signup Forms</string>
 
     <string-array name="rol">
         <item> Vendedor de comidas </item>
