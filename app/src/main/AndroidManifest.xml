@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginSQLite">
         <activity android:name=".Registro"></activity>
+        <activity android:name=".ActivityMain"></activity>
         <activity android:name=".Ingreso">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

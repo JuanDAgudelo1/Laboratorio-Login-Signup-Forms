@@ -2,7 +2,7 @@
     <string name="app_name">Login Signup Forms</string>
 
     <string-array name="rol">
-        <item> Vendedor de comidas </item>
+        <item> Vendedor de comidas</item>
         <item>Comprador</item>
         <item>Domicilio</item>
     </string-array>

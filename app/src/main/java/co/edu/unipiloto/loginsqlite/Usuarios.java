@@ -7,16 +7,21 @@ public class Usuarios {
     private String fecha;
     private String contrasena;
     private String confirmarContrasena;
+    private String spinner;
     private String sexo;
 
-    public Usuarios(String nombreCompleto, String usuarioRegistrado, String correo, String fecha, String contrasena, String confirmarContrasena, String sexo) {
+    public Usuarios(String nombreCompleto, String usuarioRegistrado, String correo, String fecha, String contrasena, String confirmarContrasena, String spinner, String sexo) {
         this.nombreCompleto = nombreCompleto;
         this.usuarioRegistrado = usuarioRegistrado;
         this.correo = correo;
+        this.fecha = fecha;
         this.contrasena = contrasena;
         this.confirmarContrasena = confirmarContrasena;
+        this.spinner = spinner;
         this.sexo = sexo;
     }
+
+
 
     public String getNombreCompleto() {
         return nombreCompleto;
@@ -44,6 +49,14 @@ public class Usuarios {
 
     public String getFecha() {
         return fecha;
+    }
+
+    public String getSpinner() {
+        return spinner;
+    }
+
+    public void setSpinner(String spinner) {
+        this.spinner = spinner;
     }
 
     public void setFecha(String fecha) {

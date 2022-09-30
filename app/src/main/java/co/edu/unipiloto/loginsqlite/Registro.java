@@ -55,41 +55,42 @@ public class Registro extends AppCompatActivity {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void envioDatos(View view){
 
-        if (!spinner.getSelectedItem().toString().equals("Comprador")){
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void envioDatos(View view) {
+        if (!spinner.getSelectedItem().toString().equals("Comprador")) {
             String[] fecha = campoFecha.getText().toString().split("/");
             LocalDate today = LocalDate.now();
-            LocalDate birthday = LocalDate.of(Integer.parseInt(fecha[2]),Integer.parseInt(fecha[1]),Integer.parseInt(fecha[0]));
+            LocalDate birthday = LocalDate.of(Integer.parseInt(fecha[2]), Integer.parseInt(fecha[1]), Integer.parseInt(fecha[0]));
 
             Period p = Period.between(birthday, today);
-            if (p.getYears()<18){
-                 Toast.makeText(this,spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+            if (p.getYears() < 18) {
+                //Toast.makeText(this,spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Es menor de edad", Toast.LENGTH_LONG).show();
                 return;
             }
-
-
         }
-       registrarUsuarios();
+        registrarUsuarios();
     }
 
 
-    public void registrarUsuarios(){
+    public void registrarUsuarios() {
+
 
         String campoSexo = "";
 
-        DatabaseHelper conexion = new DatabaseHelper(this,"bd_usuarios", null,1);
-
+        DatabaseHelper conexion = new DatabaseHelper(this, "bd_usuarios", null, 5);
         SQLiteDatabase db = conexion.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
-        if(campoMasculino.isChecked()){
+        if (campoMasculino.isChecked()) {
             campoSexo = "Masculino";
-        }if(campoFemenino.isChecked()){
+        }
+        if (campoFemenino.isChecked()) {
             campoSexo = "Femenino";
-        }if(campoOtro.isChecked()){
+        }
+        if (campoOtro.isChecked()) {
             campoSexo = "Otro";
         }
 
@@ -101,6 +102,7 @@ public class Registro extends AppCompatActivity {
             values.put(Utilidades.CAMPO_FECHA, campoFecha.getText().toString());
             values.put(Utilidades.CAMPO_CONTRASENA, campoContrasena.getText().toString());
             values.put(Utilidades.CAMPO_CONFIRMARCONTRASENA, campoConfirmarContrasena.getText().toString());
+            values.put(Utilidades.CAMPO_SPINNER, spinner.getSelectedItem().toString());
             values.put(Utilidades.CAMPO_SEXO, campoSexo);
 
             Long idResultante = db.insert(Utilidades.TABLA_USUARIO, Utilidades.CAMPO_NOMBRECOMPLETO, values);

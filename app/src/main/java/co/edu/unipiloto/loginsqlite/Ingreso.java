@@ -46,7 +46,7 @@ public class Ingreso extends AppCompatActivity implements View.OnClickListener {
     public void login(EditText contrasena){
 
 
-        DatabaseHelper conexion = new DatabaseHelper(this,"bd_usuarios", null,1);
+        DatabaseHelper conexion = new DatabaseHelper(this,"bd_usuarios", null,5);
 
         SQLiteDatabase db = conexion.getReadableDatabase();
 
@@ -75,14 +75,14 @@ public class Ingreso extends AppCompatActivity implements View.OnClickListener {
 
         SQLiteDatabase db = conexion.getReadableDatabase();
 
-        String[] campos = {Utilidades.CAMPO_NOMBRECOMPLETO,Utilidades.CAMPO_USUARIOREGISTRADO,Utilidades.CAMPO_CORREO,Utilidades.CAMPO_CONTRASENA, Utilidades.CAMPO_CONFIRMARCONTRASENA, Utilidades.CAMPO_SEXO};
+        String[] campos = {Utilidades.CAMPO_NOMBRECOMPLETO,Utilidades.CAMPO_USUARIOREGISTRADO,Utilidades.CAMPO_CORREO, Utilidades.CAMPO_FECHA, Utilidades.CAMPO_CONTRASENA, Utilidades.CAMPO_CONFIRMARCONTRASENA, Utilidades.CAMPO_SEXO};
 
         try {
             Cursor cursor = db.query(Utilidades.TABLA_USUARIO, campos, null, null, null, null, null);
             if(cursor.moveToFirst()){
                 do {
                     System.out.println(cursor.getString(0)+" "+cursor.getString(1)+" "+cursor.getString(2)+" "+cursor.getString(3)
-                            +" " + cursor.getString(4)+" "+cursor.getString(5));
+                            +" " + cursor.getString(4)+" "+cursor.getString(5)+ cursor.getString(6));
                 } while (cursor.moveToNext());
             }
             cursor.close();
