@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".Registro">
@@ -84,9 +85,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:clickable="false"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="Date of Birth (DD/MM/AAAA)"
-                    android:inputType="datetime"
                     android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
+                app:passwordToggleEnabled="true"
                 android:textColorHint="@color/white">
 
                 <EditText
@@ -104,6 +107,7 @@
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:hint="Enter password"
+
                     android:inputType="textPassword"
                     android:textSize="20sp" />
 
@@ -114,6 +118,7 @@
                 android:layout_height="wrap_content"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
+                app:passwordToggleEnabled="true"
                 android:textColorHint="@color/white">
 
                 <EditText
@@ -129,16 +134,21 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+
             <Spinner
                 android:id="@+id/rol"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:ems="10"
+                android:background="@drawable/borde"
                 android:entries="@array/rol"/>
+
+
 
             <RadioGroup
                 android:id="@+id/genders"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

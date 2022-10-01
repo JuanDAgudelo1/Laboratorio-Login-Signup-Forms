@@ -3,6 +3,7 @@ package co.edu.unipiloto.loginsqlite;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Period;
+import java.util.Calendar;
 
 public class Registro extends AppCompatActivity {
     private EditText campoNombreCompleto;
@@ -33,11 +36,34 @@ public class Registro extends AppCompatActivity {
 
     private Spinner spinner;
 
+    int dia, mes, ano;
+    EditText fecha;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+        fecha = (EditText) findViewById(R.id.fecha);
+        fecha.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+
+                final Calendar c = Calendar.getInstance();
+                dia = c.get(Calendar.DAY_OF_MONTH);
+                mes = c.get(Calendar.MONTH);
+                ano = c.get(Calendar.YEAR);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(Registro.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                        fecha.setText(dayOfMonth + "/" + (monthOfYear+1) + "/" + year);
+                    }
+                },dia,mes,ano);
+                datePickerDialog.show();
+            }
+        });
 
         campoNombreCompleto = (EditText) findViewById(R.id.fullname);
         campoUsuarioRegistado = (EditText) findViewById(R.id.username);
